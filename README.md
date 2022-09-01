@@ -11,6 +11,9 @@ VirtualBox and Vagrant versions:
 VirtualBox: 6.1.20 r143896 (Qt5.6.2)
 Vagrant: 2.2.16
 ```
+[VirtualBox install](https://www.virtualbox.org/wiki/Linux_Downloads)
+[Vagrant install](https://www.vagrantup.com/downloads)
+
 
 Kubernetes container versions:
 ```
@@ -96,3 +99,13 @@ vagrant destroy -f
 ```
 
 To destroy a specific node, run `vagrant destroy -f master|worker1|worker2`.
+
+
+### error solution
+1. The IP address configured for the host-only network is not within the allowed ranges
+[stackoverflow](https://stackoverflow.com/questions/70704093/the-ip-address-configured-for-the-host-only-network-is-not-within-the-allowed-ra)
+creating a new file at `/etc/vbox/networks.conf`
+```
+* 10.0.0.0/8 192.168.0.0/16
+* 2001::/64
+```
